@@ -1,8 +1,9 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
 from sqlalchemy.orm import declarative_base
+from sqlalchemy_utils.types import ChoiceType
 
 # cria a conexão do seu banco
-db = create_engine ("sql:///banco.db")
+db = create_engine ("sqlite:///banco.db")
 
 # cria a base do seu banco de dados
 Base = declarative_base()
@@ -31,8 +32,16 @@ class Usuario(Base):
 class Pedido(Base):
   __tablename__ = "pedidos"
 
+  # STATUS_PEDIDOS = (
+  #   ("PENDENTE", "PENDENTE"),
+  #   ("EM_PREPARACAO", "EM_PREPARACAO"),
+  #   ("A_CAMINHO", "A_CAMINHO"),
+  #   ("CANCELADO", "CANCELADO"),
+  #   ("FINALIZADO", "FINALIZADO")
+  # )
+
   id = Column("id", Integer, primary_key=True, autoincrement=True)
-  status = Column("status", String) #pendente, em preparacao, cancelado, finalizado
+  status = Column("status", String) #pendente, em preparacao, a caminho, cancelado, finalizado
   usuario = Column("usuario", ForeignKey("usuarios.id"))
   preco = Column("preco", Float)
   #itens = 
@@ -43,6 +52,21 @@ class Pedido(Base):
     self.preco = preco
 
 # ItensPedidos
+class ItemPedido(Base):
+  __tablename__ = "itens_pedido"
 
+  id = Column("id", Integer, primary_key=True, autoincrement=True)
+  quantidade = Column("quantidade", Integer)
+  sabor = Column("sabor", String)
+  tamanho = Column("tamanho", String)
+  preco_unitario = Column("preco_unitario", Float)
+  pedido = Column("pedido", ForeignKey("pedidos.id"))
+
+  def __init__(self, quantidade, sabor, tamanho, preco_unitario, pedido):
+    self.quantidade = quantidade
+    self.sabor = sabor
+    self.tamanho = tamanho
+    self.preco_unitario = preco_unitario
+    self.pedido = pedido
 
 # executa a criação dos metadados do seu banco (cria efetivamente o banco de dados)
