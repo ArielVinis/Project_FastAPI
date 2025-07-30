@@ -1,0 +1,15 @@
+# Ignora bytecode compilado
+__pycache__/
+*.py[cod]
+
+# Ignora ambientes virtuais
+venv/
+venv_new/
+
+# Ignora arquivos do SQLite
+*.db
+
+# Ignora arquivos de configuração do sistema
+.DS_Store
+*.log
+.env
