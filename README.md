@@ -1,6 +1,6 @@
 # 🍕 FastAPI - Delivery de Pizzaria
 
-Estou criando uma API REST para gerenciamento de pedidos, clientes e produtos de uma pizzaria.  
+Criei uma API REST para gerenciamento de pedidos, clientes e produtos de uma pizzaria.  
 Construída com **FastAPI**, **SQLAlchemy** e autenticação com **JWT**.
 
 ---
