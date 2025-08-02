@@ -32,7 +32,7 @@ Construída com **FastAPI**, **SQLAlchemy** e autenticação com **JWT**.
 ## 📁 Estrutura de Pastas
 
 ```bash
-pizzaria/
+Project_FastAPI/
 ├── app/
 │ ├── main.py # Inicialização do FastAPI
 │ ├── dependencies # Dependencias para verificar sessão e token
@@ -40,12 +40,14 @@ pizzaria/
 │ ├── routes/ # Endpoints da API
 │ │     └── auth/ # Geração e verificação de tokens JWT
 │ │     └── # Demais rotas
-│ ├── banco.py # Conexão e criação do banco
 │ ├── schemas/ # Pydantic (entrada e saída de dados)
-│ └── tests.py # Carregamento de variáveis .env
+│ ├── tests # Testes automatizados
+│ └── banco.db # Conexão e criação do banco
 ├── .env
-├── requirements.txt
-└── README.md
+├── .gitignore
+├── alembic.ini
+├── README.md
+└── requirements.txt
 ```
 
 ---
